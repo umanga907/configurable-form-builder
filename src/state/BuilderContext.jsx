@@ -1,16 +1,13 @@
-import { createContext, useContext, useMemo, useReducer } from 'react'
+import { useMemo, useReducer } from 'react'
 import { builderReducer, initialState } from '../model/reducer.js'
+import { ActionsContext, StateContext } from './contexts.js'
+
+export { useBuilderActions, useBuilderState } from './hooks.js'
 
 /**
- * State lives in one useReducer. It is exposed through TWO contexts so that
- * components which only dispatch (buttons, editors) never re-render when the
- * tree changes, and components which only read (preview) never re-render
- * because of a new dispatch reference. `dispatch` from useReducer is stable,
- * so the actions object below is created once.
+ * State lives in one useReducer. `dispatch` is stable, so the actions object
+ * below is created once and never causes a re-render on its own.
  */
-const StateContext = createContext(null)
-const ActionsContext = createContext(null)
-
 export function BuilderProvider({ children, initial = initialState }) {
   const [state, dispatch] = useReducer(builderReducer, initial)
 
@@ -32,18 +29,4 @@ export function BuilderProvider({ children, initial = initialState }) {
       <StateContext.Provider value={state}>{children}</StateContext.Provider>
     </ActionsContext.Provider>
   )
-}
-
-/** The whole builder state: { fields, selectedId }. */
-export function useBuilderState() {
-  const ctx = useContext(StateContext)
-  if (ctx === null) throw new Error('useBuilderState must be used inside <BuilderProvider>')
-  return ctx
-}
-
-/** Stable action helpers. Safe to depend on in useCallback/useEffect. */
-export function useBuilderActions() {
-  const ctx = useContext(ActionsContext)
-  if (ctx === null) throw new Error('useBuilderActions must be used inside <BuilderProvider>')
-  return ctx
 }

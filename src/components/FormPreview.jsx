@@ -116,7 +116,7 @@ const PreviewField = memo(function PreviewField({ field, value, showError, onCha
         aria-required={field.required || undefined}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : undefined}
-        placeholder={isNumber ? '0' : ''}
+        placeholder={isNumber ? 'Enter a number' : ''}
       />
       {error && <p id={errorId} className="field-error" role="alert">{error}</p>}
     </div>

@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useState } from 'react'
-import { useBuilderState } from '../state/BuilderContext.jsx'
+import { useBuilderState } from '../state/hooks.js'
 import { isGroup } from '../model/types.js'
 import { validateForm, validateValue } from '../model/validation.js'
 

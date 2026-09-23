@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useBuilderActions, useBuilderState } from '../state/BuilderContext.jsx'
+import { useBuilderActions, useBuilderState } from '../state/hooks.js'
 import { exportConfig, parseConfig } from '../model/config-io.js'
 import { SAMPLE_FIELDS } from '../model/sample.js'
 

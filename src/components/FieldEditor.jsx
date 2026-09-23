@@ -1,4 +1,4 @@
-import { useBuilderActions, useBuilderState } from '../state/BuilderContext.jsx'
+import { useBuilderActions, useBuilderState } from '../state/hooks.js'
 import { findField, siblingPosition } from '../model/tree.js'
 import { parseNumber } from '../model/validation.js'
 

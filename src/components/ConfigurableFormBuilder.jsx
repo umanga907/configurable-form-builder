@@ -1,4 +1,5 @@
-import { BuilderProvider, useBuilderState } from '../state/BuilderContext.jsx'
+import { BuilderProvider } from '../state/BuilderContext.jsx'
+import { useBuilderState } from '../state/hooks.js'
 import { BuilderTree } from './BuilderTree.jsx'
 import { FieldEditor } from './FieldEditor.jsx'
 import { FormPreview } from './FormPreview.jsx'

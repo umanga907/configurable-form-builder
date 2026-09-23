@@ -2,7 +2,6 @@ import { useMemo, useReducer } from 'react'
 import { builderReducer, initialState } from '../model/reducer.js'
 import { ActionsContext, StateContext } from './contexts.js'
 
-export { useBuilderActions, useBuilderState } from './hooks.js'
 
 /**
  * State lives in one useReducer. `dispatch` is stable, so the actions object

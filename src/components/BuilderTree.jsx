@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useBuilderActions, useBuilderState } from '../state/BuilderContext.jsx'
+import { useBuilderActions, useBuilderState } from '../state/hooks.js'
 import { FIELD_TYPES, isGroup } from '../model/types.js'
 
 /**

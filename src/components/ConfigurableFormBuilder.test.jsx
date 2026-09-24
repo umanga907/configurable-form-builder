@@ -94,7 +94,7 @@ describe('<ConfigurableFormBuilder />', () => {
       target: { value: '{"fields":[{"id":"a","type":"group","children":[{"id":"b","type":"number","min":"x"}]}]}' },
     })
     fireEvent.click(screen.getByRole('button', { name: 'Import JSON' }))
-    expect(screen.getByRole('alert')).toHaveTextContent('fields[0].children[0].min: expected a number')
+    expect(screen.getByRole('alert')).toHaveTextContent('fields[0].children[0].min must be a number')
     expect(screen.getByText(/No fields yet/)).toBeInTheDocument()
   })
 })

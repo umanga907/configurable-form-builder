@@ -7,7 +7,7 @@ Built for the CloudFactory Senior Frontend Engineer assessment, September 2026.
 - React 19, plain JavaScript, Vite.
 - No state management library, no form library, no UI framework. Plain CSS.
 - State: one `useReducer`, shared through Context.
-- 37 unit tests on the model plus component tests, with Vitest and Testing Library.
+- Unit tests on the model plus component tests, with Vitest and Testing Library.
 
 ## Run it
 
@@ -83,7 +83,7 @@ Number fields are `<input type="text" inputMode="decimal">` rather than `type="n
 
 ### Import (`model/config-io.js`)
 
-Pasted JSON is validated field by field. Problems are collected with a path, `fields[0].children[1].min: expected a number`, and if there is a single error nothing is imported. Missing ids, duplicate ids and missing labels are repaired and reported as warnings instead of failing, because a hand-edited config should not be rejected for a missing id. Both `{ "version": 1, "fields": [...] }` and a bare array are accepted. Nesting is capped at 32 levels.
+Pasted JSON is parsed, then `checkField` walks every field and its children. The first thing that is wrong stops the import and is reported with a path, for example `fields[0].children[1].min must be a number`. A missing `id` is the one thing that gets filled in rather than rejected, because ids are the builder's internal handle, not something a person should have to type. Both `{ "version": 1, "fields": [...] }` and a bare array are accepted.
 
 ## Decisions worth mentioning
 

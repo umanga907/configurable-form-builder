@@ -5,8 +5,8 @@ import { SAMPLE_FIELDS } from '../model/sample.js'
 
 /**
  * Export shows the current configuration as JSON and copies it. Import takes
- * pasted JSON, validates it, and either replaces the tree or lists every
- * problem with its path. Nothing is applied when there is a single error.
+ * pasted JSON, checks it, and either replaces the tree or shows the first
+ * problem with its path. Nothing is applied when something is wrong.
  */
 export function ConfigPanel() {
   const { fields } = useBuilderState()
@@ -90,21 +90,14 @@ export function ConfigPanel() {
           spellCheck={false}
         />
         {result && !result.ok && (
-          <div className="import-result err" role="alert">
-            <strong>Nothing was imported. Fix these first:</strong>
-            <ul>{result.errors.map((e, i) => <li key={i}>{e}</li>)}</ul>
-          </div>
+          <p className="import-result err" role="alert">
+            <strong>Nothing was imported.</strong> <code>{result.error}</code>
+          </p>
         )}
         {result && result.ok && (
-          <div className="import-result ok" role="status">
-            <strong>Imported {result.fields.length} top-level {result.fields.length === 1 ? 'field' : 'fields'}.</strong>
-            {result.warnings.length > 0 && (
-              <>
-                <span> Repaired on the way in:</span>
-                <ul>{result.warnings.map((w, i) => <li key={i}>{w}</li>)}</ul>
-              </>
-            )}
-          </div>
+          <p className="import-result ok" role="status">
+            Imported {result.fields.length} top-level {result.fields.length === 1 ? 'field' : 'fields'}.
+          </p>
         )}
       </section>
     </div>

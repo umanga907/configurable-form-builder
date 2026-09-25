@@ -4,6 +4,8 @@ A React component that lets a user build a form: add text, number and group fiel
 
 Built for the CloudFactory Senior Frontend Engineer assessment, September 2026.
 
+Live demo: https://configurable-form-builder-olive.vercel.app/
+
 - React 19, plain JavaScript, Vite.
 - No state management library, no form library, no UI framework. Plain CSS.
 - State: one `useReducer`, shared through Context.
